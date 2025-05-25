@@ -8,7 +8,7 @@ class TestHTMLNode(unittest.TestCase):
                       "target": "_blank"}
         
         node = HTMLNode("p", "This is a paragraph", None, test_props)
-        self.assertEqual("href=\"https://www.google.com\" target=\"_blank\"", node.props_to_html())
+        self.assertEqual(" href=\"https://www.google.com\" target=\"_blank\"", node.props_to_html())
     
     
     def test_repr(self):
