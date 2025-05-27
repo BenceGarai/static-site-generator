@@ -44,7 +44,6 @@ def split_nodes_image(old_nodes):
         if len(extracted_images) == 0 and len(node.text) != 0:
             new_nodes.append(node)
             continue
-        section = ""
         for image_alt, image_link in extracted_images:
             section = node.text.split(f"![{image_alt}]({image_link})", 1)
             if len(section[0]) > 0:
@@ -66,7 +65,6 @@ def split_nodes_link(old_nodes):
         if len(extracted_links) == 0 and len(node.text) != 0:
             new_nodes.append(node)
             continue
-        section = ""
         for link_alt, link_url in extracted_links:
             section = node.text.split(f"[{link_alt}]({link_url})", 1)
             if len(section[0]) > 0:
