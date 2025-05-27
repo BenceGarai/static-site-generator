@@ -2,17 +2,6 @@ from textnode import TextType, TextNode
 
 
 def split_nodes_delimiter(old_nodes, delimiter, text_type: TextType):
-    # node = TextNode("This is text with a `code block` word", TextType.TEXT)
-    # new_nodes = split_nodes_delimiter([node], "`", TextType.CODE)
-    
-    # becomes
-    
-    # [
-    # TextNode("This is text with a ", TextType.TEXT),
-    # TextNode("code block", TextType.CODE),
-    # TextNode(" word", TextType.TEXT),
-    # ]
-
     new_nodes = []
     for node in old_nodes:
         if node.text_type == TextType.TEXT:
