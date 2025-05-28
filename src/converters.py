@@ -1,5 +1,14 @@
 from textnode import TextNode, TextType
 from leafnode import LeafNode
+from enum import Enum
+
+class BlockType(Enum):
+    PARAGRAPH = "paragraph"
+    HEADING = "heading"
+    CODE = "code"
+    QUOTE = "quote"
+    UNORDERED_LIST = "unordered list"
+    ORDERED_LIST = "ordered list"
 
 
 def text_node_to_html_node(text_node: TextNode):
@@ -32,3 +41,33 @@ def markdown_to_blocks(markdown):
             blocks.pop(block)
         
     return blocks
+
+
+def block_to_block_type(markdown_block: str):
+    lines = markdown_block.split("\n")
+    
+    if markdown_block.startswith("#"):
+        return BlockType.HEADING
+    elif markdown_block.startswith("```") and markdown_block.endswith("```"):
+        return BlockType.CODE
+    
+    if markdown_block.startswith(">"):
+        for line in lines:
+            if not line.startswith(">"):
+                return BlockType.PARAGRAPH
+        return BlockType.QUOTE
+    
+    if markdown_block.startswith("- "):
+        for line in lines:
+            if not line.startswith("- "):
+                return BlockType.PARAGRAPH
+        return BlockType.UNORDERED_LIST
+    
+    if markdown_block.startswith("1. "):
+        i = 1
+        for line in lines:
+            if not line.startswith(f"{i}. "):
+                return BlockType.PARAGRAPH
+            i += 1
+        return BlockType.ORDERED_LIST
+    return BlockType.PARAGRAPH
