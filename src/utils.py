@@ -84,3 +84,17 @@ def split_nodes_link(old_nodes):
             new_nodes.append(TextNode(node.text, TextType.TEXT, None))
     
     return new_nodes
+
+
+def extract_title(markdown):
+    lines = markdown.splitlines()
+    for line in lines:
+        if "#" in line:
+            stripped_line = line.strip()
+            if stripped_line.startswith("#") and len(stripped_line) > 1:
+                return stripped_line[1:].strip()
+    raise Exception("No h1 found")
+
+
+def generate_page(from_path, template_path, dest_path):
+    return NotImplemented

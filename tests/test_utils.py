@@ -105,3 +105,23 @@ class TestExtractMarkdown(unittest.TestCase):
             ],
             new_nodes,
         )
+        
+
+    def test_extract_title(self):
+        md = """
+# Tolkien Fan Club
+
+![JRR Tolkien sitting](/images/tolkien.png)
+
+Here's the deal, **I like Tolkien**."""
+        self.assertEqual("Tolkien Fan Club", extract_title(md))
+
+
+    def test_extract_title_no_valid_title(self):
+        md = """
+
+![JRR Tolkien sitting](/images/tolkien.png)
+
+Here's the deal, **I like Tolkien**."""
+        with self.assertRaises(Exception):
+            title = extract_title(md)
