@@ -89,12 +89,6 @@ def split_nodes_link(old_nodes):
 
 
 def copy_static_to_public():
-    # recursive because of nested dir or files
-    # copy contents of static to public
-    
-    # 1st: delete all content in public
-    # 2nd: copy all files, subdirectories and nested files
-    # 3rd: log the path of each file to help debug
     public_path = "./public"
     static_path = "./static"
     create_public(public_path)
@@ -123,7 +117,6 @@ def copy_recursively(path, destination):
     if os.path.exists(destination) == False and os.path.isfile(path) == False:
         os.makedirs(destination, exist_ok=True)
         
-    
     file_list = os.listdir(path)
     
     for file in file_list:
