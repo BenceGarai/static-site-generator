@@ -84,6 +84,3 @@ def split_nodes_link(old_nodes):
             new_nodes.append(TextNode(node.text, TextType.TEXT, None))
     
     return new_nodes
-
-
-
