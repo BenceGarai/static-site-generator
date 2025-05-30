@@ -100,9 +100,8 @@ def copy_static_to_public():
         
 def create_public(public_path):
     if os.path.exists(public_path):
-        print("Public exists, removing folder")
+        print("Public exists, removing and creating folder.")
         shutil.rmtree(public_path)
-        print("Creating public folder")
         os.mkdir(public_path)
     else:
         print("Creating missing public directory")
