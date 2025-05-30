@@ -1,9 +1,9 @@
 from textnode import TextNode, TextType
 from leafnode import LeafNode
 from enum import Enum
-from htmlnode import HTMLNode
-from utils import *
 from parentnode import ParentNode
+from utils import text_to_textnodes
+
 
 class BlockType(Enum):
     PARAGRAPH = "paragraph"
