@@ -1,24 +1,22 @@
 import os, shutil
 
 
-def copy_static_to_public():
-    public_path = "./public"
-    static_path = "./static"
-    create_public(public_path)
+def copy_static(src_path, dest_path):
+    create_dest_dir(dest_path)
     
-    if os.path.exists(static_path) == False:
-        raise ValueError(f"Incorrect static path: {static_path}")
-    copy_recursively(static_path, public_path)
+    if os.path.exists(src_path) == False:
+        raise ValueError(f"Incorrect static path: {src_path}")
+    copy_recursively(src_path, dest_path)
 
         
-def create_public(public_path):
-    if os.path.exists(public_path):
+def create_dest_dir(dest_path):
+    if os.path.exists(dest_path):
         print("Public exists, removing and creating folder.")
-        shutil.rmtree(public_path)
-        os.mkdir(public_path)
+        shutil.rmtree(dest_path)
+        os.mkdir(dest_path)
     else:
         print("Creating missing public directory")
-        os.mkdir(public_path)
+        os.mkdir(dest_path)
 
 
 def copy_recursively(path, destination):
